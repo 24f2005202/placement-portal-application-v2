@@ -1,0 +1,198 @@
+body{
+  font-family: Arial, sans-serif;
+}
+
+
+/* -------------------------navbar --------------------------------- */
+.navbar {
+  background-color: #e1e4e79a;
+  /* margin-left: 15px;
+  margin-right: 15px; */
+  padding: 15px;
+  display: flex;
+  justify-content: space-between; /* Pushes app-name to left, buttons to right */
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  
+}
+
+/* App Name*/
+.navbar .app-name {
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #212529;
+  text-decoration: none; /* Removes the default anchor underline */
+}
+
+/* Buttons*/
+.navbar .all-buttons {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  gap: 10px; /* Puts clean spacing between the two buttons */
+}
+
+/* Dark Button  */
+.navbar .dark_btn {
+  padding: 10px 20px;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #041217;
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: none; /* Disables click/focus flash animation */
+  transition: background-color 0.2s ease;
+}
+
+/* Hove*/
+.navbar .dark_btn:hover {
+  background-color: #11252e;
+}
+
+
+/* --------------------------home------------------------- */
+.home {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 15px 25px;
+}
+
+/* Heading style */
+.home h1 {
+  font-size: 38px;
+  color: #03141a;
+  margin-bottom: 30px;
+  font-weight:600;          /* bold */
+}
+
+/* center buttons */
+.home .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Dark buttons */
+.home .btn-dark {
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 14px;
+  background-color: #041217;
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: none; /* Disables click/focus animation */
+}
+
+/* Hover*/
+.home .btn-dark:hover {
+  background-color: #11252e;
+}
+
+
+
+
+/* -----------------------------footer-------------------------------------- */
+.footer {
+  background-color: #051117;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* -----------------------------------------login / register----------------------  */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 81vh;                   /* Takes most screen height to center verticaly */
+  font-family: sans-serif;
+  background-color: #ffffff;
+}
+
+/* White wrapper for  the form structure */
+.login .login_form {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px; /* Keeps the form from getting too wide */
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Header  */
+.login h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0b1a24;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* har input ke bich main space*/
+.login .login_form > div > div {
+  margin-bottom: 20px;
+}
+
+/* Label */
+.login label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+/* Input box*/
+.login input[type="text"],
+.login input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* type hote time boder*/
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+  border-color: #051117;
+}
+
+/* submit button black*/
+.login button {
+  width: 100%; 
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #051117; 
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  margin-top: 10px;
+}
+
+/* Button kaa hover */
+.login button:hover {
+  background-color: #12222c;
+}
