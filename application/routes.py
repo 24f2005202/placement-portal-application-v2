@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, current_app, render_template
 from .database import db 
-from .models import User, Role
+from .models import User, Role, Student, Company, PlacementDrive, Application,Placement
 from flask_security import auth_required, roles_required, current_user,  hash_password, verify_password
 from .utils import roles_list
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -96,18 +96,36 @@ def register_company():
     email    = body["email"]
     password = body["password"]
 
-    if not email or not password:
-        return jsonify({"message": "email and password are required"}), 400
+    name = body["name"]
+    website_url = body["website_url"]
+    industry_type = body["industry_type"]
+    location = body["location"]
+    hr_contact_number = body["hr_contact_number"]
+    hr_email = body["hr_email"]
+    company_description = body["company_description"]
+    
+
+    if not email or not password or not name or not website_url or not industry_type or not location or not hr_contact_number or not hr_email:
+        return jsonify({"message": "All fields are required"}), 400
 
     if current_app.security.datastore.find_user(email=email):
         return jsonify({"message" : "User already exists"}), 400
     
-    current_app.security.datastore.create_user(
-        email=email,
-        password=hash_password(password),
-        roles = ['company']
-    )
+    new_user= current_app.security.datastore.create_user(
+                email=email,
+                password=hash_password(password),
+                roles = ['company']
+            )
     db.session.commit()
+
+    # new_patient = Patient(user_id=new_user.id, name=name)
+    # db.session.add(new_patient)
+    # db.session.commit()
+
+    new_company= Company(name=name, user_id=new_user.id, website_url=website_url, industry_type=industry_type, location=location, hr_contact_number=hr_contact_number, hr_email=hr_email,company_description=company_description)
+    db.session.add(new_company)
+    db.session.commit()
+
 
     return jsonify({"message": "Company registered successfully"})
 
@@ -160,17 +178,31 @@ def register_student():
     email    = body["email"]
     password = body["password"]
 
-    if not email or not password:
-        return jsonify({"message": "email and password are required"}), 400
+    name = body["name"]
+    course = body["course"]
+    department = body["department"]
+    batch_year = body["batch_year"]
+    current_cgpa =float(body["current_cgpa"]) 
+    phone_no = body["phone_no"]
+    resume_link = body["resume_link"]
+
+    
+
+    if not email or not password or not name or not course  or not department or not batch_year or not current_cgpa or not phone_no or not resume_link :
+        return jsonify({"message": "All fields are required"}), 400
 
     if current_app.security.datastore.find_user(email=email):
         return jsonify({"message" : "User already exists"}), 400
     
-    current_app.security.datastore.create_user(
+    new_user= current_app.security.datastore.create_user(
         email=email,
         password=hash_password(password),
         roles = ['student']
     )
+    db.session.commit()
+
+    new_student= Student(name=name,user_id=new_user.id, course=course, department=department, batch_year=batch_year, current_cgpa=current_cgpa, phone_no=phone_no, resume_link=resume_link )
+    db.session.add(new_student)
     db.session.commit()
 
     return jsonify({"message": "Student registered successfully"})

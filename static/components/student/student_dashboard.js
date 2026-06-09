@@ -42,17 +42,35 @@ export default {
         this.loadUser()
     },
     methods:{
-        loadUser(){
-            fetch('/api/user_data', {
-                method: 'GET',
+        async loadUser() {
+        const token = localStorage.getItem("auth_token");
+
+        if (!token) {
+            alert("Unauthorized. Please login first.");
+            this.$router.push('/login');
+            return;                              //retuen to exit from function, if not the code following code will execute 
+        }
+
+        try {
+            const response = await fetch('/api/user_data', {
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authentication-Token": localStorage.getItem("auth_token")
+                    "Authentication-Token": token
                 }
-            })
-            .then(response => response.json())
-            .then(data => this.userData = data)
+            });
+
+            if (!response.ok) {
+                alert("Unauthorized. Please login first.");
+                this.$router.push('/login');
+                return;
+            }
+
+            const data = await response.json();
+            this.userData = data;
+
+        } catch (error) {
+            console.error(error);
+            alert("Something went wrong.");
         }
     }
 
-}
+}}

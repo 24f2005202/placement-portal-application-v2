@@ -3,6 +3,7 @@ export default {
     
     <nav class="navbar">
         <a class="app-name" href="/">
+            <img src="/static/img/logo.png" alt="Logo" style="width: 22px; margin-right: 10px;">
             Placement Portal Application
         </a>
             

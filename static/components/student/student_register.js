@@ -12,6 +12,38 @@ export default {
                     <label for="pass">Create a password:</label>
                     <input type="password" id="pass" v-model="formData.password">
                 </div>
+
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" v-model="formData.name">
+                </div>
+                <div>
+                    <label for="course">Course :</label>
+                    <input type="text" id="course" v-model="formData.course">
+                </div>
+                <div>
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" v-model="formData.department">
+                </div>
+                <div>
+                    <label for="batch_year">Batch Year:</label>
+                    <input type="text" id="batch_year" v-model="formData.batch_year">
+                </div>
+                <div>
+                    <label for="current_cgpa">Current CGPA:</label>
+                    <input type="text" id="current_cgpa" v-model="formData.current_cgpa">
+                </div>
+                <div>
+                    <label for="phone_no">Phone Number:</label>
+                    <input type="text" id="phone_no" v-model="formData.phone_no">
+                </div>
+                <div>
+                    <label for="resume_link">Resume Link:</label>
+                    <input type="text" id="resume_link" v-model="formData.resume_link">
+                </div>
+
+
+
                 <div>
                     <button @click="addUser">Register</button>
                 </div>
@@ -28,6 +60,14 @@ export default {
             formData:{
                 email: "",
                 password: "",
+
+                name: "",
+                course: "",
+                department: "",
+                batch_year: "",
+                current_cgpa: "",
+                phone_no: "",
+                resume_link: ""
             } 
         }
     },
@@ -48,7 +88,7 @@ export default {
                 this.$router.push('/login');
 
             } catch (error) {
-            console.error("Registration failed:", error);
+                console.error("Registration failed:", error);
             alert("Something went wrong. Please try again.");
             }
         }
