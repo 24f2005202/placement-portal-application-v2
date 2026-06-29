@@ -24,6 +24,9 @@ def login_User():
 
     if not user:
         return jsonify({"message": "User not found"}), 404
+    
+    if not user.active:                              
+        return jsonify({"message": "Account is not active, if you are a company and registered just now, please wait some time, admisistration will verify your account soon."}), 403
 
     if verify_password(password,user.password):
         user_roles= roles_list(user.roles)
@@ -114,7 +117,8 @@ def register_company():
     new_user= current_app.security.datastore.create_user(
                 email=email,
                 password=hash_password(password),
-                roles = ['company']
+                roles = ['company'],
+                active= False                         # 
             )
     db.session.commit()
 
