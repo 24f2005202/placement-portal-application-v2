@@ -10,7 +10,7 @@ export default {
                 </div>
                 <div>
                     <label for="pass">Create a password:</label>
-                    <input type="password" id="pass" v-model="formData.password">
+                    <input type="password" id="pass" v-model="formData.password" @keyup.enter="login_user">   <!-- @keyup.enter="login_user": trigger login_user when enter is pressed  -->
                 </div>
                 <div>
                     <button @click="login_user">Login</button>
@@ -50,6 +50,7 @@ export default {
                     localStorage.setItem("auth_token", data["auth_token"])
                     localStorage.setItem("id", data["id"])
                     localStorage.setItem("role", data["role"])
+                    localStorage.setItem("login_status", true)
                     
                     if(data["role"]==="admin"){
                         this.$router.push('/admin_dashboard');

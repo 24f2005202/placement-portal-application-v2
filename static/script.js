@@ -12,10 +12,18 @@ import Company_Register from './components/company/company_register.js'
 import Company_Dashboard from './components/company/company_dashboard.js'
 import Company_Dashboard_Overview from './components/company/company_dashboard_overview.js'
 import Company_Profile from './components/company/company_profile.js'
+import Company_ongoing_placement_drives from './components/company/ongoing_placement_drives.js'
+import Closed_placement_drives from './components/company/closed_placement_drives.js'
+import Create_Placement_Drive from './components/company/create_placement_drive.js'
+import View_Placement_Drive from './components/company/view_placement_drive.js'
 
 import Admin_Dashboard from './components/admin/admin_dashboard.js'
 import Admin_Dashboard_Overview from './components/admin/admin_dashboard_overview.js'
 import Admin_Profile from './components/admin/admin_profile.js'
+import Registered_students from './components/admin/registered_students.js'
+import Registered_companies from './components/admin/registered_companies.js'
+import Ongoing_placement_drives from './components/admin/ongoing_placement_drives.js'
+import Company_applications from './components/admin/company_applications.js'
 
 const routes = [
     { path: '/', component: Home },
@@ -45,6 +53,22 @@ const routes = [
             {
                 path: 'profile',
                 component: Company_Profile
+            },
+            {
+                path: 'ongoing_placement_drives',
+                component: Company_ongoing_placement_drives
+            },
+            {
+                path: 'closed_placement_drives',
+                component: Closed_placement_drives
+            },
+            {
+                path: 'create_placement_drive',
+                component: Create_Placement_Drive
+            },
+            {
+                path: 'view_placement_drive/:id',
+                component: View_Placement_Drive
             }
         ]
     },
@@ -58,7 +82,23 @@ const routes = [
             {
                 path: 'profile',
                 component: Admin_Profile
-            }
+            },
+            {
+                path: 'registered_students',
+                component: Registered_students
+            },
+            {
+                path: 'registered_companies',
+                component: Registered_companies
+            },
+            {
+                path: 'ongoing_placement_drives',
+                component: Ongoing_placement_drives
+            },
+            {
+                path: 'company_applications',
+                component: Company_applications
+            },
         ]
     }
 ]

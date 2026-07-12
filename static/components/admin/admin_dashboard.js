@@ -1,7 +1,7 @@
 export default {
     template: `
     <div>
-        <h4 class="my-2 mx-3">Welcome {{userData.email}}!</h4>
+        <h4 class="my-2 mx-3">Welcome Admin ({{userData.email}})!</h4>
         
         <div class="row border">
             <div class="col-2 border" style="height: 750px;">
@@ -13,9 +13,29 @@ export default {
                         Dashboard
                     </router-link>
                     
+                    
+                    <router-link to="/admin_dashboard/registered_students" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                    Registered Students
+                    </router-link>
+                    
+                    <router-link to="/admin_dashboard/registered_companies" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                    Registered Companies
+                    </router-link>
+
+                    <router-link to="/admin_dashboard/ongoing_placement_drives" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                    Ongoing Placement Drives
+                    </router-link>
+
+                    <router-link to="/admin_dashboard/company_applications" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Company Applications
+                    </router-link>
+                    
                     <router-link to="/admin_dashboard/profile" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
                         Profile
                     </router-link>
+                    
+                    
+
                     
 
                 </div>

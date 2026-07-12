@@ -17,6 +17,14 @@ export default {
                         Profile
                     </router-link>
                     
+                    <router-link to="/company_dashboard/ongoing_placement_drives" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Ongoing Placement Drives
+                    </router-link>
+
+                    <router-link to="/company_dashboard/closed_placement_drives" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Closed Placement Drives
+                    </router-link>
+                    
 
 
                 </div>

@@ -45,7 +45,7 @@ with app.app_context():
         db.session.add(new_company)
 
     if not Student.query.filter_by(user_id=new_user_3.id).first():
-        new_student= Student(name="Student0",user_id=new_user_3.id, course="BTech", department="ECE", batch_year="2028", current_cgpa=9.2, phone_no="+919876543210", resume_link="student0@ppa.com" )
+        new_student= Student(name="Student0",user_id=new_user_3.id, course="BTECH-ECE", batch_year="2028", current_cgpa=9.2, phone_no="+919876543210", resume_link="student0@ppa.com" )
         db.session.add(new_student)
     
     db.session.commit()

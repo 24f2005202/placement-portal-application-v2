@@ -1,5 +1,6 @@
 from .database import db
 from flask_security import UserMixin, RoleMixin
+from sqlalchemy import JSON
 
 
 #---------------------- RBAC Models ------------------------
@@ -38,7 +39,7 @@ class Student(db.Model):
     id= db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String, nullable=False)
     course=db.Column(db.String, nullable=False)
-    department=db.Column(db.String, nullable=False)
+    # department=db.Column(db.String, nullable=False)
     batch_year=db.Column(db.String, nullable=False)          # graduation year
     current_cgpa = db.Column(db.Float, nullable=False)
     phone_no =db.Column(db.String)
@@ -59,7 +60,7 @@ class Company(db.Model):
     hr_contact_number=db.Column(db.String, nullable=False)              # +91 9876543210
     hr_email=db.Column(db.String, nullable=False)
     company_description=db.Column(db.String, nullable=False)
-    approval_status = db.Column(db.Boolean, nullable= False, default=False)
+    # approval_status = db.Column(db.Boolean, nullable= False, default=False)
 
     user_id= db.Column(db.Integer, db.ForeignKey("user.id"), unique=True)
 
@@ -71,18 +72,22 @@ class PlacementDrive(db.Model):
     id= db.Column(db.Integer, primary_key=True)
     job_title= db.Column(db.String, nullable=False)
     job_description= db.Column(db.String, nullable=False)
-    status = db.Column(db.String, nullable=False)                     # Pending / Approved / Closed (closed na bhi rakhne aur deadline se chek kar sakte hai)
+    status = db.Column(db.String, nullable=False, default="Pending")                     # Pending / Approved / Closed (closed na bhi rakhne aur deadline se chek kar sakte hai)
     deadline = db.Column(db.Date)                                     # dd/mm/yyyy
+    eligible_branches = db.Column(JSON, nullable=False)
+    eligible_passing_years = db.Column(JSON, nullable=False)
+    eligible_minimum_cgpa = db.Column(db.Float, nullable=False)
+
 
     company_id= db.Column(db.Integer,  db.ForeignKey("company.id"), nullable=False)
 
     # Oneto Many relation
     applications= db.relationship('Application', backref='placement_drive')
 
-    e_course = db.Column(db.String)                                  # Eligibility Criteria
-    e_department = db.Column(db.String)
-    e_batch_year = db.Column(db.String)          
-    e_cgpa = db.Column(db.Float)
+    # e_course = db.Column(db.String)                                  # Eligibility Criteria
+    # e_department = db.Column(db.String)
+    # e_batch_year = db.Column(db.String)          
+    # e_cgpa = db.Column(db.Float)
 
 
 class Application(db.Model):

@@ -1,3 +1,118 @@
-<div>
+<!-- <div>
     <img src="/static/img/ppa.png" alt="">
-</div>
+</div> -->
+
+
+
+<div class="row" style="background-color: #eff1f3ee; padding: 20px; border-radius: 5px;">
+            <h2 style="font-family: sans-serif; font-size: 30px; font-weight: bold;">View Placement Drive</h2>
+        </div>
+       
+
+        <form style="padding: 20px;">
+            <div class="mb-3">
+                <label for="ID" class="form-label">ID</label>
+                <input
+                    class="form-control"
+                    id="ID"
+                    type="text"
+                    :placeholder="placement_drive.id"
+                    disabled
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="job_title" class="form-label">Job Title</label>
+                <input
+                    class="form-control"
+                    id="job_title"
+                    type="text"
+                    :placeholder="placement_drive.job_title"
+                    disabled
+                >
+            </div>
+            
+            <div class="mb-3">
+                <label for="job_description" class="form-label">Job Description</label>
+                <input
+                    class="form-control"
+                    id="job_description"
+                    type="text"
+                    :placeholder="placement_drive.job_description"
+                    disabled
+                >
+            </div>
+            <div class="mb-3">
+                <label for="eligible_minimum_cgpa" class="form-label">Eligible Minimum CGPA</label>
+                <input
+                    class="form-control"
+                    id="eligible_minimum_cgpa"
+                    type="text"
+                    :placeholder="placement_drive.eligible_minimum_cgpa"
+                    disabled
+                >
+            </div>
+            <div class="mb-3">
+                <label for="deadline" class="form-label">Deadline</label>
+                <input
+                    class="form-control"
+                    id="deadline"
+                    type="text"
+                    :placeholder="placement_drive.deadline"
+                    disabled
+                >
+            </div>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <input
+                    class="form-control"
+                    id="status"
+                    type="text"
+                    :placeholder="placement_drive.status"
+                    disabled
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="eligible_branches" class="form-label">Eligible Branches</label>
+                <input
+                    class="form-control"
+                    id="eligible_branches"
+                    type="text"
+                    :placeholder="placement_drive.eligible_branches.join(', ')"
+                    disabled
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="eligible_passing_years" class="form-label">Eligible Passing Years</label>
+                <input
+                    class="form-control"
+                    id="eligible_passing_years"
+                    type="text"
+                    :placeholder="placement_drive.eligible_passing_years.join(', ')"
+                    disabled
+                >
+            </div>
+
+        </form>
+
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name Title</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="application in placement_drive.applications" :key="application.id">
+                <td scope="row">{{ application.id }}</td>
+                <td>{{ application.name }}</td>
+                <td>
+                <button type="button" class="btn btn-info" @click="viewApplication(application.id)">View</button>
+                </td>
+            </tr>
+        </tbody>
+        </table>
