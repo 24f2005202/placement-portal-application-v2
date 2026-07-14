@@ -31,8 +31,7 @@ export default {
                 <td>{{ company.hr_email }}</td>
                 <td>{{ company.company_description }}</td>
                 <td>
-                <button type="button" class="btn btn-success">Approve</button>
-                <button type="button" class="btn btn-danger">Reject</button>
+                <button type="button" class="btn btn-success" @click="activate_company(company.id)">Approve</button>
                 </td>
             </tr>
         </tbody>
@@ -63,6 +62,28 @@ export default {
 
             const data= await response.json()
             this.CompaniesApplications = data
+        },
+        async activate_company(company_id) {
+            try {
+                const response = await fetch(`/api/admin/activate_company/${company_id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Authentication-Token": localStorage.getItem("auth_token")
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message);
+                    this.loadRegisteredCompanies();
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Something went wrong.");
+            }
         }
         }
     }

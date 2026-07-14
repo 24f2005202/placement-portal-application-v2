@@ -9,16 +9,28 @@ export default {
 
                 <div class="sidebar-menu" style="display: flex; flex-direction: column; gap: 10px; padding: 10px">
                     
+                    <router-link to="/student_dashboard/profile" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Profile
+                    </router-link>
+
                     <router-link to="/student_dashboard" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
                         Dashboard
                     </router-link>
                     
-                    <router-link to="/student_dashboard/profile" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
-                        Profile
+                    <router-link to="/student_dashboard/ongoing_placement_drives" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Ongoing Placement Drives
                     </router-link>
-                    
-                    <router-link to="/student_dashboard/jobs" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
-                        Jobs
+
+                    <router-link to="/student_dashboard/registered_companies" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Registered Companies
+                    </router-link>
+
+                    <router-link to="/student_dashboard/applied_drives" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Applied Drives
+                    </router-link>
+
+                    <router-link to="/student_dashboard/interview" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Interview
                     </router-link>
 
                 </div>

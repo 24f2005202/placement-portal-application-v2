@@ -24,14 +24,20 @@ export default {
             <tr v-for="company in registeredCompanies" :key="company.id">
                 <td scope="row">{{ company.id }}</td>
                 <td>{{ company.name }}</td>
-                <td>{{ company.website_url }}</td>
+                <td> <a :href="company.website_url" target="_blank"> {{ company.website_url }} </a> </td>
                 <td>{{ company.industry_type }}</td>
                 <td>{{ company.location }}</td>
                 <td>{{ company.hr_contact_number }}</td>
                 <td>{{ company.hr_email }}</td>
                 <td>{{ company.company_description }}</td>
                 <td>
-                <button type="button" class="btn btn-danger">Blacklist</button>
+                    <button
+                        type="button"
+                        class="btn btn-danger btn-sm"
+                        @click="blacklistCompany(company.id)"
+                    >
+                        Blacklist
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -62,6 +68,30 @@ export default {
 
             const data= await response.json()
             this.registeredCompanies = data
+        },
+
+        async blacklistCompany(companyId) {
+
+            if (!confirm("Are you sure you want to blacklist this company?")) {
+                return
+            }
+
+            const response = await fetch(`/api/admin/deactivate_company/${companyId}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authentication-Token": localStorage.getItem("auth_token")
+                }
+            })
+
+            const data = await response.json()
+
+            if (response.ok) {
+                alert(data.message)
+
+                this.loadRegisteredCompanies()
+            } else {
+                alert(data.message)
+            }
         }
-        }
-    }
+        }}

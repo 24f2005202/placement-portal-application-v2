@@ -1,6 +1,7 @@
 from .database import db
 from flask_security import UserMixin, RoleMixin
 from sqlalchemy import JSON
+from datetime import date
 
 
 #---------------------- RBAC Models ------------------------
@@ -72,11 +73,14 @@ class PlacementDrive(db.Model):
     id= db.Column(db.Integer, primary_key=True)
     job_title= db.Column(db.String, nullable=False)
     job_description= db.Column(db.String, nullable=False)
-    status = db.Column(db.String, nullable=False, default="Pending")                     # Pending / Approved / Closed (closed na bhi rakhne aur deadline se chek kar sakte hai)
+    status = db.Column(db.String, nullable=False, default="Pending")                     # no use bcs approved companys' all drives are automaticly approved # Pending / Approved / Closed (closed na bhi rakhne aur deadline se chek kar sakte hai)
     deadline = db.Column(db.Date)                                     # dd/mm/yyyy
     eligible_branches = db.Column(JSON, nullable=False)
     eligible_passing_years = db.Column(JSON, nullable=False)
     eligible_minimum_cgpa = db.Column(db.Float, nullable=False)
+    salary=db.Column(db.Float)
+    jd_link=db.Column(db.String, nullable=False)
+    # interview_mode=db.Column(db.String)            #In-person/Online
 
 
     company_id= db.Column(db.Integer,  db.ForeignKey("company.id"), nullable=False)
@@ -96,8 +100,29 @@ class Application(db.Model):
     student_id= db.Column(db.Integer, db.ForeignKey("student.id"), nullable=False)
     drive_id= db.Column(db.Integer, db.ForeignKey("placement_drive.id"), nullable=False)                    # SQLAlchemy converts CamelCase class names to snake_case table names, Placement_Drive TO Placement_Drive
     
-    application_date = db.Column(db.Date)  
-    approval_status = db.Column(db.String, default="Applied")                     # (Applied / Shortlisted / Selected / Rejected)
+    application_date = db.Column(db.Date, default=date.today)  
+    status = db.Column(db.String, default="applied")                     # applied / shortlisted / interview_scheduled / interview_completed / selected / rejected 
+
+    interviews = db.relationship("Interview", backref="application", cascade="all, delete-orphan")
+
+
+class Interview(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    application_id = db.Column(db.Integer, db.ForeignKey("application.id"), nullable=False)
+
+    round_name = db.Column(db.String, nullable=False)          # HR, Technical, Aptitude
+    interview_mode = db.Column(db.String, nullable=False)            # Online / Offline
+
+    interview_date = db.Column(db.Date, nullable=False)
+    interview_time = db.Column(db.Time, nullable=False)
+
+    interview_location_or_meeting_link = db.Column(db.String)                        # room 201
+    # meeting_link = db.Column(db.String)                            # gmeet link
+
+    remarks = db.Column(db.String)
+
+    status = db.Column(db.String, default="scheduled")   # scheduled, completed, cancelled
 
     
 class Placement(db.Model):

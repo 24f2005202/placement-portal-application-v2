@@ -12,9 +12,9 @@ def company_applications_list(all_companies):
     return company_applications
                 
 def registered_company_list(all_companies):         
-    company_applications= []
+    registered_company_list= []
     for company in all_companies:
         if company.user.active == True:
-            company_applications.append(company)
-    return company_applications
+            registered_company_list.append(company)
+    return registered_company_list
                 

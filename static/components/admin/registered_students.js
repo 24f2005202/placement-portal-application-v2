@@ -14,6 +14,7 @@ export default {
                 <th scope="col">Course</th>
                 <th scope="col">Batch Year</th>
                 <th scope="col">Current CGPA</th>
+                <th scope="col">Resume Link</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -24,8 +25,9 @@ export default {
                 <td>{{ student.course }}</td>
                 <td>{{ student.batch_year }}</td>
                 <td>{{ student.current_cgpa }}</td>
+                <td> <a :href="student.resume_link" target="_blank"> {{ student.resume_link }} </a> </td>
                 <td>
-                <button type="button" class="btn btn-danger">Blacklist</button>
+                <button type="button" class="btn btn-danger" @click="blacklist_student(student.id)">Blacklist</button>
                 </td>
             </tr>
         </tbody>
@@ -56,6 +58,28 @@ export default {
 
             const data= await response.json()
             this.registeredStudents = data
+        },
+        async blacklist_student(student_id) {
+            try {
+                const res = await fetch(`/api/admin/deactivate_student/${student_id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Authentication-Token": localStorage.getItem("auth_token")
+                    }
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    alert(data.message);
+                    this.loadRegisteredStudents();   
+                } else {
+                    alert(data.message);
+                }
+            } catch (error) {
+                console.error(error);
+                alert("Something went wrong.");
+            }
         }
         }
     }

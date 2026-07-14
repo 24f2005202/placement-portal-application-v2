@@ -9,6 +9,12 @@ export default {
 
                 <div class="sidebar-menu" style="display: flex; flex-direction: column; gap: 10px; padding: 10px">
                     
+
+                    
+                    <router-link to="/admin_dashboard/profile" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Profile
+                    </router-link>
+                    
                     <router-link to="/admin_dashboard" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
                         Dashboard
                     </router-link>
@@ -26,12 +32,25 @@ export default {
                     Ongoing Placement Drives
                     </router-link>
 
+                    <router-link to="/admin_dashboard/closed_placement_drives" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                    Closed Placement Drives
+                    </router-link>
+
                     <router-link to="/admin_dashboard/company_applications" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
                         Company Applications
                     </router-link>
                     
-                    <router-link to="/admin_dashboard/profile" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
-                        Profile
+                    
+                    <router-link to="/admin_dashboard/deactivated_students" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Deactivated Students
+                    </router-link>
+                    
+                    <router-link to="/admin_dashboard/deactivated_companies" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Deactivated Companies
+                    </router-link>
+                    
+                    <router-link to="/admin_dashboard/student_applications" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Student Applications
                     </router-link>
                     
                     

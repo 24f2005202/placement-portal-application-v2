@@ -28,7 +28,7 @@ export default {
         </div>
 
         <div class="col-5 border" style="height: 200px; margin: auto;margin-top: 20px;border-radius: 10px;border-radius: 10px; box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.1)">
-            <router-link to="/admin_dashboard/_placement_drives" style="text-decoration: none; color: #051117; ">
+            <router-link to="/admin_dashboard/ongoing_placement_drives" style="text-decoration: none; color: #051117; ">
                 <div style="font-size: 60px; margin-top: 20px;display: flex;justify-content: center;">  
                 {{overview_data.placement_drive_count}}
                 </div>

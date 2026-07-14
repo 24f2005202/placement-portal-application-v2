@@ -20,18 +20,30 @@ export default {
         <div class="mb-3">
             <label for="eligible_branches" class="form-label">Eligible Branches</label>
             <input type="text" class="form-control" id="eligible_branches" v-model="formData.eligible_branches" aria-describedby="eligible_branches_eg" >
-            <div id="eligible_branches_eg" class="form-text">comma separated, Eg. BTECH-CSE, BS-DSA, MTECH-ECE</div>
+            <div id="eligible_branches_eg" class="form-text">comma separated, Eg. BTECH-CSE,BS-DSA,MTECH-ECE</div>
         </div>
 
         <div class="mb-3">
             <label for="eligible_passing_years" class="form-label">Eligible Passing Years</label>
             <input type="text" class="form-control" id="eligible_passing_years" v-model="formData.eligible_passing_years" aria-describedby="eligible_passing_years_eg" >
-            <div id="eligible_passing_years_eg" class="form-text">comma separated, Eg. 2020, 2021, 2022</div>
+            <div id="eligible_passing_years_eg" class="form-text">comma separated, Eg. 2020,2021,2022</div>
         </div>
 
         <div class="mb-3">
             <label for="eligible_minimum_cgpa" class="form-label">Eligible Minimum CGPA</label>
             <input type="text" class="form-control" id="eligible_minimum_cgpa" v-model="formData.eligible_minimum_cgpa">
+        </div>
+
+        <div class="mb-3">
+            <label for="salary" class="form-label">Salary</label>
+            <input type="text" class="form-control" id="salary" v-model="formData.salary" aria-describedby="salary_help">
+            <div id="salary_help" class="form-text">In INR</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="jd_link" class="form-label">JD Link</label>
+            <input type="text" class="form-control" id="jd_link" v-model="formData.jd_link" aria-describedby="jd_link_help" >
+            <div id="jd_link_help" class="form-text">Drive/Web page link</div>
         </div>
 
         <button type="submit" class="btn btn-primary" @click="createDrive">Create Placement Drive</button>
@@ -50,7 +62,9 @@ export default {
                 deadline: "",
                 eligible_branches: "",
                 eligible_passing_years: "",
-                eligible_minimum_cgpa: ""
+                eligible_minimum_cgpa: "",
+                salary: "",
+                jd_link: "",
             }
         }
     },

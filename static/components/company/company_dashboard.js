@@ -25,6 +25,10 @@ export default {
                         Closed Placement Drives
                     </router-link>
                     
+                    <router-link to="/company_dashboard/interviews" style="text-decoration: none; color: #051117; font-family: sans-serif; font-size: 16px; font-weight: bold; padding: 10px; border-radius: 6px;">
+                        Interviews
+                    </router-link>
+                    
 
 
                 </div>
@@ -32,7 +36,7 @@ export default {
 
 
             </div>
-            <div class="col-10 border" style="height: 750px;">
+            <div class="col-10 border" >
                 <router-view></router-view>
             </div>
         </div>
