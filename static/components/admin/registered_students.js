@@ -25,7 +25,7 @@ export default {
                 <td>{{ student.course }}</td>
                 <td>{{ student.batch_year }}</td>
                 <td>{{ student.current_cgpa }}</td>
-                <td> <a :href="student.resume_link" target="_blank"> {{ student.resume_link }} </a> </td>
+                <td> <a :href="student.resume_link" target="_blank"> View </a> </td>
                 <td>
                 <button type="button" class="btn btn-danger" @click="blacklist_student(student.id)">Blacklist</button>
                 </td>

@@ -7,12 +7,25 @@ from application.routes import bp
 from flask_security import Security, SQLAlchemyUserDatastore
 from flask_security import hash_password
 
+# cacheing-----------------------------------
+from application.cache import cache
+# cacheing-----------------------------------
+
 app=Flask(__name__)
 app.config.from_object(Config)
 app.register_blueprint(bp)                         #app.register_blueprint(bp, url_prefix="/")
 db.init_app(app)
 datastore = SQLAlchemyUserDatastore(db, User, Role)
 app.security = Security(app, datastore)
+
+# cacheing-----------------------------------
+app.config["CACHE_TYPE"] = "RedisCache"
+app.config["CACHE_REDIS_HOST"] = "localhost"
+app.config["CACHE_REDIS_PORT"] = 6379
+app.config["CACHE_DEFAULT_TIMEOUT"] = 60
+
+cache.init_app(app)
+# cacheing-----------------------------------
 
 with app.app_context():
     db.create_all()

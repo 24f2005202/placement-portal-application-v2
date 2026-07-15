@@ -6,6 +6,7 @@ from .utils import roles_list, company_applications_list, registered_company_lis
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import date
 from datetime import datetime
+from .cache import cache
 
 
 bp= Blueprint("bp", __name__, template_folder='../templates', static_folder='../static')
@@ -127,6 +128,7 @@ def admin_overview():
 @bp.route('/api/admin/registered_students')
 @auth_required('token')
 @roles_required('admin')
+@cache.cached(timeout=300)
 def registered_students():
     students = Student.query.all()
     student_list = []
@@ -912,7 +914,6 @@ def register_student():
 
     name = body["name"]
     course = body["course"]
-    department = body["department"]
     batch_year = body["batch_year"]
     current_cgpa =float(body["current_cgpa"]) 
     phone_no = body["phone_no"]
@@ -920,7 +921,7 @@ def register_student():
 
     
 
-    if not email or not password or not name or not course  or not department or not batch_year or not current_cgpa or not phone_no or not resume_link :
+    if not email or not password or not name or not course  or not batch_year or not current_cgpa or not phone_no or not resume_link :
         return jsonify({"message": "All fields are required"}), 400
 
     if current_app.security.datastore.find_user(email=email):
@@ -933,7 +934,7 @@ def register_student():
     )
     db.session.commit()
 
-    new_student= Student(name=name,user_id=new_user.id, course=course, department=department, batch_year=batch_year, current_cgpa=current_cgpa, phone_no=phone_no, resume_link=resume_link )
+    new_student= Student(name=name,user_id=new_user.id, course=course,  batch_year=batch_year, current_cgpa=current_cgpa, phone_no=phone_no, resume_link=resume_link )
     db.session.add(new_student)
     db.session.commit()
 

@@ -22,10 +22,6 @@ export default {
                     <input type="text" id="course" v-model="formData.course">
                 </div>
                 <div>
-                    <label for="department">Department:</label>
-                    <input type="text" id="department" v-model="formData.department">
-                </div>
-                <div>
                     <label for="batch_year">Batch Year:</label>
                     <input type="text" id="batch_year" v-model="formData.batch_year">
                 </div>
@@ -63,7 +59,6 @@ export default {
 
                 name: "",
                 course: "",
-                department: "",
                 batch_year: "",
                 current_cgpa: "",
                 phone_no: "",
